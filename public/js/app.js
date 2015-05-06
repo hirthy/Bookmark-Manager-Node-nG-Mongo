@@ -35,12 +35,12 @@ angular.module('bookmarkApp', ['ngRoute', 'bookmarkApp.bookmarkControllers', 'bo
     .when('/about', {
       templateUrl: 'views/about.tpl.html',
       controller  : 'AboutCtrl',
-  		access: { requiredLogin: false }
+      access: { requiredLogin: false }
     })
 
     .when('/bookmarks', {
       templateUrl: 'views/bookmarks.tpl.html',
-  		controller  : 'BookmarkCtrl',
+      controller  : 'BookmarkCtrl',
       access: { requiredLogin: true }
     })
 

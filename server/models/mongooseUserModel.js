@@ -23,7 +23,7 @@ Mongoose Schema - maps to a MongoDB collection
 Defines the documents in the collection. 
 http://mongoosejs.com/docs/guide.html
 *********************************************************************/
-var Schema = mongoose.Schema;			//Mongoose Schema
+var Schema = mongoose.Schema;     //Mongoose Schema
 
 /* ========================================================== 
 CREATE A MONGOOSE SCHEMA OBJECT
@@ -48,7 +48,7 @@ Disable the behavior by setting the autoIndex option of your schema to false.
 ===================================================================*/
 userSchema.set('autoIndex', false);
 
-module.exports = userSchema; 			//Export the userSchema
+module.exports = userSchema;      //Export the userSchema
 
 //To add additional keys later, use the Schema#add method
 
@@ -63,15 +63,15 @@ userSchema.pre('save', function(next) {
     var user = this;
 
     if(!user.isModified('password')) 
-    	return next();
+      return next();
  
     bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
         if(err) 
-        	return next(err);
+          return next(err);
 
         bcrypt.hash(user.password, salt, function(err, hash) {
             if(err) 
-            	return next(err);
+              return next(err);
             user.password = hash;
             next();
         });
@@ -84,7 +84,7 @@ Password verification
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if(err) 
-        	return cb(err);
+          return cb(err);
 
         cb(null, isMatch);
     });

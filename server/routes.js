@@ -13,7 +13,7 @@ https://npmjs.org/package/express-jwt
 
 var mongoose = require('mongoose');
 //Mongoose version
-console.log('Running mongoose version %s', mongoose.version);		
+console.log('Running mongoose version %s', mongoose.version);       
 
 /*=================================================================
 Express middleware to validate a JSON Web token
@@ -39,30 +39,31 @@ var bookRoutes = require('./routes/book-routes.js');
 module.exports = function(app) 
 {
 
-	/* ========================================================== 
-	User Routes
-	============================================================ */
-	app.post('/register', authRoutes.register);
-	app.post('/login', authRoutes.login);
-	app.post('/logout', authRoutes.logout);
-	//app.get('/admin', authRoutes.getAdmin);
+    /* ========================================================== 
+    User Routes
+    ============================================================ */
+    app.post('/register', authRoutes.register);
+    app.post('/login', authRoutes.login);
+    app.post('/logout', authRoutes.logout);
+    //app.get('/admin', authRoutes.getAdmin);
 
-	/* ========================================================== 
-	Bookmark Routes
-	============================================================ */
-	app.post('/bookmarks', expressJwt({secret:secret.JWTsecret}), bookRoutes.addBookmark);
-	app.get('/bookmarks', expressJwt({secret:secret.JWTsecret}), bookRoutes.getBookmarks);
-	app.delete('/bookmarks/:bookmark_id', expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteBookmark);
+    /* ========================================================== 
+    Bookmark Routes
+    ============================================================ */
+    app.post('/bookmarks', expressJwt({secret:secret.JWTsecret}), bookRoutes.addBookmark);
+    app.get('/bookmarks', expressJwt({secret:secret.JWTsecret}), bookRoutes.getBookmarks);
+    app.get('/exportBookmarks', expressJwt({secret:secret.JWTsecret}), bookRoutes.exportBookmarks);
+    app.delete('/bookmarks/:bookmark_id', expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteBookmark);
 
-	/* ========================================================== 
-	Tag Routes
-	============================================================ */
-	app.post('/tags', expressJwt({secret:secret.JWTsecret}), bookRoutes.addTag);
-	app.get('/tags', expressJwt({secret:secret.JWTsecret}), bookRoutes.getTags);
-	app.delete('/tags/:tag_id', expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteTag);
+    /* ========================================================== 
+    Tag Routes
+    ============================================================ */
+    app.post('/tags', expressJwt({secret:secret.JWTsecret}), bookRoutes.addTag);
+    app.get('/tags', expressJwt({secret:secret.JWTsecret}), bookRoutes.getTags);
+    app.delete('/tags/:tag_id', expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteTag);
 
 
-	//NOT IMPLEMENTED YET!!!!!!
-	app.put('/tagFromBookmark/:bookmarkId',expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteTagFromBookmark);
+    //NOT IMPLEMENTED YET!!!!!!
+    app.put('/tagFromBookmark/:bookmarkId',expressJwt({secret:secret.JWTsecret}), bookRoutes.deleteTagFromBookmark);
 
 };

@@ -14,33 +14,33 @@ http://visionmedia.github.io/masteringnode/book.html
 /* ========================================================== 
 External Modules/Packages Required
 ============================================================ */
-var express  = require('express');						//Express v4.7
-var mongoose = require('mongoose'); 					//mongoose for mongodb
-var logger   = require('morgan');						//logger middleware
-var bodyParser = require('body-parser');				//middleware to read Http packet content using req.body etc
-var path = require('path');								
-var http = require('http');		
-var colours = require('colors');						
+var express  = require('express');                      //Express v4.7
+var mongoose = require('mongoose');                     //mongoose for mongodb
+var logger   = require('morgan');                       //logger middleware
+var bodyParser = require('body-parser');                //middleware to read Http packet content using req.body etc
+var path = require('path');                             
+var http = require('http');     
+var colours = require('colors');                        
 
 
 /* ========================================================== 
 Internal App Modules/Packages Required
 ============================================================ */
-var database = require('./server/config/database'); 	//database config - i.e. Local/remote MongoDB URL
+var database = require('./server/config/database');     //database config - i.e. Local/remote MongoDB URL
 
-var routes = require('./server/routes.js');				//Exchange routes & mongoose interaction with DB
+var routes = require('./server/routes.js');             //Exchange routes & mongoose interaction with DB
 
 
 /* ========================================================== 
 Create a new application with Express
 ============================================================ */
-var app = express(); 		
+var app = express();        
 
 /* ========================================================== 
 Port the server will listen on
 ============================================================ */
-//var port = process.env.PORT || 3080; 					//set the port
-app.set('port', process.env.PORT || 3080); 				//set the port
+//var port = process.env.PORT || 3080;                  //set the port
+app.set('port', process.env.PORT || 3080);              //set the port
 
 
 /********************************************************************
@@ -58,7 +58,7 @@ mongoose.connect(database.url, {safe:true}, function (err, res) {
     console.log ('Successfully connected to: ' + database.url);
   }
 });
-	
+    
 
 /* ========================================================== 
 serve the static index.html from the public folder
@@ -68,9 +68,9 @@ app.use(express.static(__dirname + '/public'));
 /* ========================================================== 
 Use Middleware
 ============================================================ */
-app.use(logger('dev')); 	//log every request to the console in dev
+app.use(logger('dev'));     //log every request to the console in dev
 // parse application/json
-app.use(bodyParser.json());	//needed for req.body
+app.use(bodyParser.json()); //needed for req.body
 
 /* ========================================================== 
 ROUTES - using Express

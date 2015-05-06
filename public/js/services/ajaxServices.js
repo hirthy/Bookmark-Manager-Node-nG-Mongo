@@ -28,6 +28,20 @@ angular.module('bookmarkApp.ajaxServices', [])
           return deferred.promise; //returns the promise
       },
 
+      exportBookmarks : function() {
+        var deferred = $q.defer();
+        $http.get('/exportBookmarks')
+
+          .success(function(bookmarks) {
+            deferred.resolve(bookmarks);
+          })
+          .error(function(reason) {
+            return deferred.reject ("OOPS Unable to Get Bookmarks!!!" + reason);//TEST
+          });
+
+          return deferred.promise; //returns the promise
+      },
+
 
       addBookmark : function(bookmark) {
         var deferred = $q.defer();

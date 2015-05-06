@@ -21,6 +21,10 @@
                 
                 <!-- Bookmark URL -->
                 <div class="form-group">
+                    <label for="inputBookmarkName" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputBookmarkName" placeholder="Name" ng-model="bookmark.name">
+                    </div>
                     <label for="inputBookmarkLink" class="col-sm-2 control-label">Link</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputBookmarkLink" placeholder="Link" ng-model="bookmark.link">
@@ -92,7 +96,7 @@
                 <div class="col-md-12 bookmark-item" ng-repeat="bookmark in bookmarks | filter:search"> <!-- ADDED*** -->
                     <h4>
                         <span class="glyphicon glyphicon-pushpin"></span>
-                        <a href="{{bookmark.link}}" target="_blank">{{bookmark.link}}</a>
+                        <a href="{{bookmark.link}}" target="_blank">{{bookmark.name}}</a>
                         <span class="glyphicon glyphicon-remove" ng-click="deleteBookmark(bookmark)"></span>
                     </h4>
 

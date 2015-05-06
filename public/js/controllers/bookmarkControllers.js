@@ -85,9 +85,8 @@ Controller
         bookmarkService.exportBookmarks()
             //Response Handler
             .then(function(html) {
-                $scope.html = html;
-                console.log(html);
-                return bookmarkService
+                var file = new Blob([html], { type: 'text/html' });
+                saveAs(file, 'bookmarks.html');
             })
             .catch(reportProblems); //same as: promise.then(null, errorCallback)
     };

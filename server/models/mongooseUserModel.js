@@ -37,7 +37,7 @@ var userSchema = new Schema( {
   is_admin: { type: Boolean, required: true },
   created: { type: Date, default: Date.now },
   tags:[ {name : String, color : String } ],
-  bookmarks:[{link : String, tags:[ {name : String, color : String } ]}]
+  bookmarks:[{link : String, name: String, tags:[ {name : String, color : String } ]}]
 } );
 
 /*=================================================================

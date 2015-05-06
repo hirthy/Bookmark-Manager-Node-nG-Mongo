@@ -49,7 +49,7 @@ module.exports = {
         http://mongoosejs.com/docs/documents.html
         =================================================================*/
 
-        UserModel.findByIdAndUpdate(userId ,{$push : {bookmarks: {link : req.body.link, tags : req.body.tags}}}, function(err, user_data) {
+        UserModel.findByIdAndUpdate(userId ,{$push : {bookmarks: {link : req.body.link, name : req.body.name, tags : req.body.tags}}}, function(err, user_data) {
             if (err) {
                 res.send(err);
             }
@@ -133,10 +133,12 @@ module.exports = {
             if (err)
                 res.send(err);
             else {
-                var bookmarks = {
-                    'jenkins': user_data.bookmarks[0].link
-                }
                 var netscape = require('netscape-bookmarks');
+                var bookmarks = {};
+                for (var i = 0; i < user_data.bookmarks.length; i++) {
+                    bookmarks[user_data.bookmarks[i].name] = user_data.bookmarks[i].link;
+                }
+                //console.log(bookmarks);
                 var html = netscape(bookmarks);
                 return res.json(html);              //In JSON
             }

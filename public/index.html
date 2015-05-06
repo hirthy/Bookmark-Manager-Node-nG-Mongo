@@ -44,7 +44,7 @@ http://lifehacker.com/5540019/five-best-bookmark-management-tools
 
             <!-- Group Brand and toggle for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#/">Bookmark Manager</a>
+                <a class="navbar-brand" href="#/bookmarks">Bookmark Manager</a>
 
                 <!-- Collapse Button -->
                 <button type="button" data-target=".navbar-collapse" data-toggle="collapse"
@@ -60,7 +60,6 @@ http://lifehacker.com/5540019/five-best-bookmark-management-tools
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li ng-show="auth.isLogged"><a href="#/bookmarks">Bookmarks</a></li>
-                    <li><a href="#/about">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">        
                     <li ng-if="auth.isLogged" ng-model="welcome"><a href="#/logout">{{welcome}} Logout</a></li>

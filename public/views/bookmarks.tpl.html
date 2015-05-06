@@ -25,6 +25,9 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputBookmarkName" placeholder="Name" ng-model="bookmark.name">
                     </div>
+                </div>
+
+                <div class="form-group">
                     <label for="inputBookmarkLink" class="col-sm-2 control-label">Link</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputBookmarkLink" placeholder="Link" ng-model="bookmark.link">
@@ -88,16 +91,13 @@
         </div>
 
         <div class="col-md-8">
-
-            <h1><span class="glyphicon glyphicon-list"></span> Bookmarks</h1>
-
-
+            <h1><span class="glyphicon glyphicon-list"></span> Bookmarks<button type="submit" class="btn btn-success pull-right" ng-click="exportBookmarks()">Export</button></h1>
             <div class="row">
                 <div class="col-md-12 bookmark-item" ng-repeat="bookmark in bookmarks | filter:search"> <!-- ADDED*** -->
                     <h4>
                         <span class="glyphicon glyphicon-pushpin"></span>
                         <a href="{{bookmark.link}}" target="_blank">{{bookmark.name}}</a>
-                        <span class="glyphicon glyphicon-remove" ng-click="deleteBookmark(bookmark)"></span>
+                        <span class="glyphicon glyphicon-remove pull-right" ng-click="deleteBookmark(bookmark)"></span>
                     </h4>
 
                     <ul class="list-inline bookmark">
@@ -108,7 +108,6 @@
 
                 </div>
             </div> <!-- @END .row -->
-            <button type="submit" class="btn btn-success" ng-click="exportBookmarks()">Export</button>
         </div> <!-- @END .col-md-8 -->
     </div> <!-- @END .row -->
 </div> <!-- @END .container -->
